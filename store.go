@@ -166,7 +166,7 @@ func (m *lockedMap[V]) UpdateExpiration(key uint64, newExpiration time.Time) boo
 		return false
 	}
 
-	m.em.update(item.conflict, item.conflict, item.expiration, newExpiration)
+	m.em.update(item.key, item.conflict, item.expiration, newExpiration)
 
 	item.expiration = newExpiration
 	m.data[key] = item
