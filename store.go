@@ -158,8 +158,8 @@ func (m *lockedMap[V]) Expiration(key uint64) time.Time {
 }
 
 func (m *lockedMap[V]) UpdateExpiration(key uint64, newExpiration time.Time) bool {
-	m.RLock()
-	defer m.RUnlock()
+	m.Lock()
+	defer m.Unlock()
 
 	item, ok := m.data[key]
 	if !ok {
